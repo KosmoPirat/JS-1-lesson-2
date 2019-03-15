@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lesson 2</title>
+</head>
+<body>
+<script>
+    "use strict";
+    // задание 2.1
+/*
+//пример 1
+    let a = 1, b = 1, c, d;
+    c = ++a;
+    alert(c); //ответ: 2
+    //1) a присваевается 1; 2) заем выполнятся префиксная форма инкремента а++ ( a = a + 1 ) => a = 2; 3) выполняется присваивание ( с = 2 )
+
+//пример 2
+
+    d = b++;
+    alert(c); //ответ: 1
+    //1) b присваевается 1; 2) заем выполнятся присваивание d = 1 (т.к. использовалась постфиксная форма инкремента) 3) выполняется инкремент b++ ( b = b +1 ) => b = 2
+
+//пример 3
+    c = (2+ ++a);
+    alert(c); //ответ: 5
+    // 1) в a уже храниться значение 2 потом выполняется инкремент ++a ( a = 2 + 1 ) => a = 3; 2) выполняется сложение ( 2 + 3 ); 3) затем выполняется присваивание c = 5
+
+//пример 4
+    d = (2+ b++);
+    alert(d); //ответ: 4
+    // 1) в b уже храниться значение 2 потом выполняется сложение ( 2 + 2 ) (т.к. использовалась постфиксная форма инкремента); 2) выполняется присваивание  d = 4; 3) затем выполняется инкремент b++ ( b = b +1 ) => b = 3)
+
+//пример 5
+    alert(a); //ответ: 3
+    // т.к. переменная а является глобальной в этой "области" кода, все манипуляции с ней сохраняются на протяжении всего выполнения кода
+
+//пример 6
+    alert(b); //ответ: 3
+    // т.к. переменная b является глобальной в этой "области" кода, все манипуляции с ней сохраняются на протяжении всего выполнения кода
+*/
+
+    // задание 2.2
+    let a = 2;
+    let x = 1 + ( a *= 2 );
+    console.log(x);
+    // ответ: 5 ( операции в скобках выполняются в первую очередь т.к. приоритет оператора "()" выше всех остальных операторов в данном примере. Далее выполняется оператор *= ( a = a * 2 ) => a = 4, затем выполняется оператор сложения (1 + 4) и в последнюю очередь оператор присванивания ( x= 5 ))
+
+    // задание 2.3
+function getRandomInRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+let mathBlender = function() {
+    let firstNum = getRandomInRange(-100, 100);
+    let secondNum = getRandomInRange(-100, 100);
+    if( firstNum >= 0 && secondNum >= 0 ) {
+        return firstNum - secondNum;
+    } else if( firstNum < 0 && secondNum < 0 ) {
+        return firstNum * secondNum;
+    } else return firstNum + secondNum;
+}
+console.log(mathBlender());
+
+    // задание 2.4
+let mySum = (firstOperand, secondOperand) => firstOperand + secondOperand;
+let myMultiplication = (firstOperand, secondOperand) => firstOperand * secondOperand;
+let mySubtraction = (firstOperand, secondOperand) => firstOperand - secondOperand;
+let myDivision = (firstOperand, secondOperand) => firstOperand / secondOperand;
+    // задание 2.5
+function mathOperation(arg1, arg2, operation) {
+    switch (operation.toLowerCase()) {
+        case 'умножение' :
+            return myMultiplication(arg1, arg2);
+            break;
+        case 'вычитание' :
+            return mySubtraction(arg1, arg2);
+            break;
+        case 'сложение' :
+            return mySum(arg1, arg2);
+            break;
+        case 'деление' :
+            return myDivision(arg1, arg2);
+            break;
+        default :
+            alert('Что то пошло не так! :( перезапустите страницу и попробуйте еще раз!)')
+            return 0;
+    }
+}
+let operation = prompt('Введите одну и операций которою хотите произвести ("Сложение", "Вычитание" , "Деление", "Умножение"):','Сложение');
+let args = prompt(`Введите два числа через пробел с которым хотите провести операцию ${operation}`, '2 2').split(' ');
+alert(`Результат = ${mathOperation(Number(args[0]), Number(args[1]), operation)}`);
+    // задание 2.6
+function power (val, pow) {
+    if(pow != 1) {
+        return val * power(val, pow - 1);
+    } else return val; ``
+}
+console.log(`рекурсия: ${power(2, 2)}`);
+    // задание 2.7
+function securityCheck (str){
+    if(str.match(/[&\$%\*]/i) == null) return alert('Не корректный пароль');
+    if(str.length < 3 || str.length > 12) return alert('Не корректный пароль');
+    else if ( (str.charAt(0) === 'q' || str.charAt(str.length) === 'z') ) return alert('Корректный пароль');
+    else return alert('Не корректный пароль');
+}
+securityCheck (prompt('Ведите пароль для проверки:', ''));
+</script>
+</body>
+</html>
