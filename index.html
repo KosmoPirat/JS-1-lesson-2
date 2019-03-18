@@ -100,10 +100,10 @@ function power (val, pow) {
 console.log(`рекурсия: ${power(2, 2)}`);
     // задание 2.7
 function securityCheck (str){
-    if(str.match(/[&\$%\*]/i) == null) return alert('Не корректный пароль');
-    if(str.length < 3 || str.length > 12) return alert('Не корректный пароль');
-    else if ( str.charAt(0) === 'q' || str.charAt(str.length - 1) === 'z' ) return alert('Корректный пароль');
-    else return alert('Не корректный пароль');
+    if(str.match(/[&\$%\*]/i) == null) return alert('Не корректный пароль!');
+    if(str.length < 3 || str.length > 12) return alert('Не корректный пароль!');
+    else if ( str.charAt(0) === 'q' || str.charAt(str.length - 1) === 'z' ) return alert('Корректный пароль!');
+    else return alert('Не корректный пароль!');
 }
 securityCheck (prompt('Ведите пароль для проверки:', ''));
 </script>
