@@ -67,7 +67,10 @@ console.log(mathBlender());
 let mySum = (firstOperand, secondOperand) => firstOperand + secondOperand;
 let myMultiplication = (firstOperand, secondOperand) => firstOperand * secondOperand;
 let mySubtraction = (firstOperand, secondOperand) => firstOperand - secondOperand;
-let myDivision = (firstOperand, secondOperand) => firstOperand / secondOperand;
+let myDivision = (firstOperand, secondOperand) => {
+    if( secondOperand == 0 ) return null;
+    else return firstOperand / secondOperand;
+}
     // задание 2.5
 function mathOperation(arg1, arg2, operation) {
     switch (operation.toLowerCase()) {
@@ -81,7 +84,8 @@ function mathOperation(arg1, arg2, operation) {
             return mySum(arg1, arg2);
             break;
         case 'деление' :
-            return myDivision(arg1, arg2);
+            if(myDivision(arg1, arg2) == null) return 'Бесконечность и еще дальше)';
+            else return myDivision(arg1, arg2);
             break;
         default :
             alert('Что то пошло не так! :( перезапустите страницу и попробуйте еще раз!)')
