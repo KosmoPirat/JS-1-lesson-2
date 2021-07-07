@@ -67,7 +67,10 @@ console.log(mathBlender());
 let mySum = (firstOperand, secondOperand) => firstOperand + secondOperand;
 let myMultiplication = (firstOperand, secondOperand) => firstOperand * secondOperand;
 let mySubtraction = (firstOperand, secondOperand) => firstOperand - secondOperand;
-let myDivision = (firstOperand, secondOperand) => firstOperand / secondOperand;
+let myDivision = (firstOperand, secondOperand) => {
+    if( secondOperand == 0 ) return null;
+    else return firstOperand / secondOperand;
+}
     // задание 2.5
 function mathOperation(arg1, arg2, operation) {
     switch (operation.toLowerCase()) {
@@ -81,16 +84,17 @@ function mathOperation(arg1, arg2, operation) {
             return mySum(arg1, arg2);
             break;
         case 'деление' :
-            return myDivision(arg1, arg2);
+            if(myDivision(arg1, arg2) == null) return 'Бесконечность и еще дальше)';
+            else return myDivision(arg1, arg2);
             break;
         default :
             alert('Что то пошло не так! :( перезапустите страницу и попробуйте еще раз!)')
             return 0;
     }
 }
-/*let operation = prompt('Введите одну и операций которою хотите произвести ("Сложение", "Вычитание" , "Деление", "Умножение"):','Сложение');
+let operation = prompt('Введите одну и операций которою хотите произвести ("Сложение", "Вычитание" , "Деление", "Умножение"):','Сложение');
 let args = prompt(`Введите два числа через пробел с которым хотите провести операцию ${operation}`, '2 2').split(' ');
-alert(`Результат = ${mathOperation(Number(args[0]), Number(args[1]), operation)}`);*/
+alert(`Результат = ${mathOperation(Number(args[0]), Number(args[1]), operation)}`);
     // задание 2.6
 function power (val, pow) {
     if(pow != 1) {
@@ -100,10 +104,10 @@ function power (val, pow) {
 console.log(`рекурсия: ${power(2, 2)}`);
     // задание 2.7
 function securityCheck (str){
-    if(str.match(/[&\$%\*]/i) == null) return alert('Не корректный пароль');
-    if(str.length < 3 || str.length > 12) return alert('Не корректный пароль');
-    else if ( str.charAt(0) === 'q' || str.charAt(str.length - 1) === 'z' ) return alert('Корректный пароль');
-    else return alert('Не корректный пароль');
+    if(str.match(/[&\$%\*]/i) == null) return alert('Не корректный пароль!');
+    if(str.length < 3 || str.length > 12) return alert('Не корректный пароль!');
+    else if ( str.charAt(0) === 'q' || str.charAt(str.length - 1) === 'z' ) return alert('Корректный пароль!');
+    else return alert('Не корректный пароль!');
 }
 securityCheck (prompt('Ведите пароль для проверки:', ''));
 </script>
